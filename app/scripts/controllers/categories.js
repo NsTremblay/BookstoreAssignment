@@ -17,7 +17,7 @@ angular.module('yomanApp')
   	$scope.loadBooks = function(category){
   		$http({
 		  method: 'GET',
-		  url: 'http://api.nytimes.com/svc/books/v3/lists/{{category}}.json?&api-key=4f4b41d9c1fe9dedde90e6b7e736764e:1:74712870'
+		  url: 'http://api.nytimes.com/svc/books/v3/lists/{{category}}.json?&api-key='+key
 		}).then(function successCallback(response) {
 		    // this callback will be called asynchronously
 		    // when the response is available

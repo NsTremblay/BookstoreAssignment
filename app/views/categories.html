@@ -43,31 +43,31 @@
                         </a>
                     </li>
                     <li role="best" class="active">
-                        <a data-toggle="tab" href="#categories/Animals" onclick="loadBooks('animals')">Animals</a>
+                        <a data-toggle="tab" href="#categories/animals" onclick="loadBooks('animals')">Animals</a>
                     </li>
                     <li role="new">
-                        <a data-toggle="tab"href="#categories/Business">Business</a>
+                        <a data-toggle="tab"href="#categories/business">Business</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Celebreties">Celebreties</a>
+                        <a data-toggle="tab"href="#categories/celebreties">Celebreties</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Culture">Culture</a>
+                        <a data-toggle="tab"href="#categories/culture">Culture</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Education">Education</a>
+                        <a data-toggle="tab"href="#categories/education">Education</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Espionage">Espionage</a>
+                        <a data-toggle="tab"href="#categories/espionage">Espionage</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Family">Family</a>
+                        <a data-toggle="tab"href="#categories/family">Family</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Fashion">Fashion</a>
+                        <a data-toggle="tab"href="#categories/fashion">Fashion</a>
                     </li>
                     <li role="presentation">
-                        <a data-toggle="tab"href="#categories/Health">Health</a>
+                        <a data-toggle="tab"href="#categories/health">Health</a>
                     </li>
                     
                 </ul>
@@ -86,11 +86,11 @@
 
 	                <!-- Tab panes -->
 	                <div class="tab-content">
-		                <div ng-repeat="category in categories track by $categoryIndex">
-		                	<div role="presentation" class="tab-pane" id="{{$categoryIndex}}" style="width:90%; float:right;">>
-			                	<div ng-repeat="books in category track by $categoryIndex">
+		                <div ng-repeat="category in categories track by $indexCat">
+		                	<div role="presentation" class="tab-pane" style="width:90%; float:right;">>
+			                	<div ng-repeat="books in category track by $bookRowIndex" ng-if="category">
 			                      <div class="row">
-			                      <div ng-repeat="book in books">
+			                      <div ng-repeat="book in books track by $bookIndex">
 			                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
 			                          <img src="{{book.book_image}}" style="width:80%"></img>
 			                          <br>
