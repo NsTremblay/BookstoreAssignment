@@ -1,0 +1,112 @@
+
+<script >
+      $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });  
+});
+
+      
+    </script>
+
+<div id="wrapper" style="padding-top: 60px;width:100%;">
+        
+            <!-- Sidebar -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <li class="sidebar-brand" >
+                        <a href="#">
+                           Categories
+                        </a>
+                    </li>
+                    <li role="best" class="active">
+                        <a data-toggle="tab" href="#categories/Animals" onclick="loadBooks('animals')">Animals</a>
+                    </li>
+                    <li role="new">
+                        <a data-toggle="tab"href="#categories/Business">Business</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Celebreties">Celebreties</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Culture">Culture</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Education">Education</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Espionage">Espionage</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Family">Family</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Fashion">Fashion</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-toggle="tab"href="#categories/Health">Health</a>
+                    </li>
+                    
+                </ul>
+            </nav>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+              <div id="page-content-wrapper">
+            <div class="container" >
+                    <button type="button" class="hamburger is-closed" data-toggle="offcanvas" style="margin-top:60px">
+                    <span class="hamb-top"></span>
+              <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+                </button>
+                <div ng-controller="CategoryController">
+
+	                <!-- Tab panes -->
+	                <div class="tab-content">
+		                <div ng-repeat="category in categories track by $categoryIndex">
+		                	<div role="presentation" class="tab-pane" id="{{$categoryIndex}}" style="width:90%; float:right;">>
+			                	<div ng-repeat="books in category track by $categoryIndex">
+			                      <div class="row">
+			                      <div ng-repeat="book in books">
+			                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
+			                          <img src="{{book.book_image}}" style="width:80%"></img>
+			                          <br>
+			                          {{book.price}}
+			                        </div>
+			                      </div>
+			                      </div>
+			                    </div>
+		                    </div>
+		                </div>
+		            </div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>

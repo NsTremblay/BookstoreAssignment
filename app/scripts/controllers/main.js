@@ -15,6 +15,8 @@ angular.module('yomanApp')
       'Karma'
     ];
 
+    
+
     // Simple GET request example:
 	$http({
 	  method: 'GET',

@@ -24,7 +24,21 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      
+      .when('/categories/', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoryController',
+        controllerAs: 'categories'
+      })
+      .when('/categories/:type', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoryController',
+        controllerAs: 'categories'
+      })
+      .when('/categories/:type/:id', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoryController',
+        controllerAs: 'categories'
+      })
 
       .otherwise({
         redirectTo: '/'
