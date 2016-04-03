@@ -14,9 +14,24 @@ angular.module('yomanApp')
       'AngularJS',
       'Karma'
     ];
+    
+    $scope.numberInCart = 0;
+    $scope.indexForBook=0;
 
+    $scope.addToCart = function(bookToAdd, bookInd){
 
+		$scope.numberInCart++;
+		console.log(bookToAdd);
+		console.log(bookInd);
+		globalCart.push(angular.fromJson(bookToAdd));
+		console.log(globalCart);
 
+	};
+
+	$scope.addBook = function(){
+		$scope.numberInCart++;
+	};
+	
     // Simple GET request example:
 	$http({
 	  method: 'GET',
@@ -32,13 +47,13 @@ angular.module('yomanApp')
 	    for (var i = 0; i<tempBestBooks.length; i = i+4) {
 	    	$scope.bestBooks[indexToIncrement] = [];
 	    	$scope.bestBooks[indexToIncrement][0] = tempBestBooks[i];
-	    	$scope.bestBooks[indexToIncrement][0].price = Math.round(Math.random()*50 * 100) / 100;
+	    	$scope.bestBooks[indexToIncrement][0].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 	    	$scope.bestBooks[indexToIncrement][1] =tempBestBooks[i+1];
-   	    	$scope.bestBooks[indexToIncrement][1].price = Math.round(Math.random()*50 * 100) / 100;
+   	    	$scope.bestBooks[indexToIncrement][1].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 	    	$scope.bestBooks[indexToIncrement][2] =tempBestBooks[i+2];
-	    	$scope.bestBooks[indexToIncrement][2].price = Math.round(Math.random()*50 * 100) / 100;
+	    	$scope.bestBooks[indexToIncrement][2].price = (20+Math.round(Math.random()*20 * 100) / 100-15).toFixed(2);
 	    	$scope.bestBooks[indexToIncrement][3] = tempBestBooks[i+3];
-	   	    $scope.bestBooks[indexToIncrement][3].price = Math.round(Math.random()*50 * 100) / 100;
+	   	    $scope.bestBooks[indexToIncrement][3].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 
 	    	console.log(indexToIncrement);
 	    	indexToIncrement++;
@@ -65,13 +80,13 @@ angular.module('yomanApp')
 	    for (var i = 0; i<tempBestBooks.length; i = i+4) {
 	    	$scope.newBestBooks[indexToIncrement] = [];
 	    	$scope.newBestBooks[indexToIncrement][0] = tempBestBooks[i];
-	    	$scope.newBestBooks[indexToIncrement][0].price = Math.round(Math.random()* 100) / 100;
+	    	$scope.newBestBooks[indexToIncrement][0].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 	    	$scope.newBestBooks[indexToIncrement][1] =tempBestBooks[i+1];
-	    	$scope.newBestBooks[indexToIncrement][1].price = Math.round(Math.random()*50 * 100) / 100;
+	    	$scope.newBestBooks[indexToIncrement][1].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 	    	$scope.newBestBooks[indexToIncrement][2] =tempBestBooks[i+2];
-	    	$scope.newBestBooks[indexToIncrement][2].price = Math.round(Math.random()*50 * 100) / 100;
+	    	$scope.newBestBooks[indexToIncrement][2].price = (20+Math.round(Math.random()*20 * 100) / 100-15).toFixed(2);
 	    	$scope.newBestBooks[indexToIncrement][3] = tempBestBooks[i+3];
-	    	$scope.newBestBooks[indexToIncrement][3].price = Math.round(Math.random()*50 * 100) / 100;
+	    	$scope.newBestBooks[indexToIncrement][3].price = (20+Math.round(Math.random()*20 * 100) / 100).toFixed(2);
 
 	    	console.log(indexToIncrement);
 	    	indexToIncrement++;
@@ -82,6 +97,6 @@ angular.module('yomanApp')
 	    // or server returns response with an error status.
 
 	  });
+	
 
-    
   }]);

@@ -1,0 +1,56 @@
+
+<script >
+      $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+
+
+    </script>
+
+<div id="wrapper" style="width:100%;" onLoad="loadBooks('animals')">
+  <div class="container" >
+    <div ng-controller="PaymentController">
+
+      <h2>Your shopping cart</h2>
+      <br>
+      <div ng-repeat="book in shoppingCart track by $index">
+        <div class="row">
+          <img src="{{book.book_image}}" height="100"></img>
+          {{book.title}}
+          <div style = "float:right;">Quantity <a ng-Click="down($index)"><span class="glyphicon glyphicon-menu-down"></span></a>{{book.quantity}}<a ng-Click="up($index)"> <span class="glyphicon glyphicon-menu-up"></span></a> : ${{book.price}}</div>
+          <button ng-Click="removeBook($index)">Remove</button>
+        </div>
+        <br>
+
+      </div>
+      <p style="float:right;line-height: 20px;font-size: 20px">Your total is ${{total }}</p>
+      <button ng-href="#/payment" class="btn btn-primary btn-block">Checkout</button>
+      <br><br>
+    </div>
+  </div>
+</div>

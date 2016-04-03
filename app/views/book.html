@@ -1,0 +1,70 @@
+
+<script >
+      $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });
+});
+
+
+    </script>
+
+<div id="wrapper" style="padding-top: 60px;width:100%;" onLoad="loadBooks('animals')">
+
+
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+            <div class="container" >
+                <div ng-controller="BookController">
+
+                  <h3>{{book.title}}</h3>
+                  <div style="float:left;position:relative;"><img src="{{book.book_image}}" height="250"></img><br></div>
+                  <div style="float:right;position:relative;"><p>{{book.description}}</p></div>
+                  <br><br><br><br><br><br><br><br><br><br><br>
+                  <h3>Related books</h3>
+                  <div ng-repeat="books in category" ng-init="loadBooks('animals')" >
+                      <div class="row">
+                      <div ng-repeat="book in books">
+                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
+                          <img src="{{book.book_image}}" style="width:80%"></img>
+                          <a ng-href="#/book/{{book.isbn}}">More information</a>
+                          <br>
+                          {{book.price}}
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+
+
+
+            </div>
+            <!-- /#page-content-wrapper -->

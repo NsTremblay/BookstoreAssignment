@@ -7,34 +7,34 @@
      isClosed = false;
 
     trigger.click(function () {
-      hamburger_cross();      
+      hamburger_cross();
     });
 
     function hamburger_cross() {
 
-      if (isClosed == true) {          
+      if (isClosed == true) {
         overlay.hide();
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
         isClosed = false;
-      } else {   
+      } else {
         overlay.show();
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;
       }
   }
-  
+
   $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
-  });  
+  });
 });
 
-      
+
     </script>
 
 <div id="wrapper" style="padding-top: 60px;width:100%;">
-        
+
             <!-- Sidebar -->
             <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                 <ul class="nav sidebar-nav">
@@ -49,13 +49,8 @@
                     <li role="new">
                         <a data-toggle="tab"href="#new">New Release</a>
                     </li>
-                    <li role="presentation">
-                        <a data-toggle="tab"href="#soon">Coming Soon</a>
-                    </li>
-                    <li role="presentation">
-                        <a data-toggle="tab"href="#sale">Books on Sale</a>
-                    </li>
-                    
+
+
                 </ul>
             </nav>
             <!-- /#sidebar-wrapper -->
@@ -75,22 +70,26 @@
 
                   <div role="best" class="tab-pane active" id="best" style="width:90%; float:right;">
 
-                  <div ng-controller="MainCtrl">
-                    
-                    <div ng-repeat="books in bestBooks ">
-                      <div class="row">
-                      <div ng-repeat="book in books">
-                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
-                          <img src="{{book.book_image}}" style="width:80%"></img>
+                  <div ng-controller="MainCtrl" ng-init="$rowIndex = 0">
+
+                    <div ng-repeat="books in bestBooks" ng-init="$rowIndex = $rowIndex+1">
+                      <div class="row" >
+                      <div ng-repeat="book in books track by $index">
+
+                        <div class="col-md-3" style="height:100%" ng-if="book"> <h4>{{book.title}}</h4>
+                          <img src="{{book.book_image}}" height="250" ></img>
                           <br>
-                          {{book.price}}
+                          <strong ng-init="count()">${{book.price}}</strong><br>
+
+                          <span ng-if="$index==2" style="color:gold">SALE!!!</strong></span>
+                          <button ng-Click="addBook()" class="btn btn-default" >Add to Cart</button>
                         </div>
                       </div>
                       </div>
-                      
+
                     </div>
 
-                  
+
                   </div>
                   </div>
 

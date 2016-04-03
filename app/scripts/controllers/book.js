@@ -8,16 +8,51 @@
  * Controller of the yomanApp
  */
 angular.module('yomanApp')
-  .controller('CategoryController', [ '$scope', '$http', function ($scope, $http) {
+  .controller('BookController', [ '$scope', '$http', function ($scope, $http) {
+    $scope.book = {
+    	"rank": 1,
+    	"rank_last_week": 0,
+    	"weeks_on_list": 0,
+    	"asterisk": 0,
+    	"dagger": 0,
+    	"primary_isbn10": "0802124739",
+    	"primary_isbn13": "9780802124739",
+    	"publisher": "Grove\/Atlantic",
+    	"description": "A grief-stricken British woman decides to raise a goshawk, a fierce bird that is notoriously difficult to tame.",
+    	"price": 25,
+    	"title": "H IS FOR HAWK",
+    	"author": "Helen Macdonald",
+    	"contributor": "by Helen Macdonald",
+    	"contributor_note": "",
+    	"book_image": "http:\/\/du.ec2.nytimes.com.s3.amazonaws.com\/prd\/books\/9780802123411.jpg",
+    	"amazon_product_url": "http:\/\/www.amazon.com\/H-Is-Hawk-Helen-Macdonald\/dp\/0802123414?tag=thenewyorktim-20",
+    	"age_group": "",
+    	"book_review_link": "",
+    	"first_chapter_link": "",
+    	"sunday_review_link": "http:\/\/www.nytimes.com\/2015\/02\/22\/books\/review\/helen-macdonalds-h-is-for-hawk.html",
+    	"article_chapter_link": "",
+    	"isbns": [{
+    		"isbn10": "0802123414",
+    		"isbn13": "9780802123411"
+    	}, {
+    		"isbn10": "1448130727",
+    		"isbn13": "9781448130726"
+    	}, {
+    		"isbn10": "1481530968",
+    		"isbn13": "9781481530965"
+    	}, {
+    		"isbn10": "148153095X",
+    		"isbn13": "9781481530958"
+    	}, {
+    		"isbn10": "1410483614",
+    		"isbn13": "9781410483614"
+    	}, {
+    		"isbn10": "0802124739",
+    		"isbn13": "9780802124739"
+    	}]
+    };
 
-  	$scope.categories = ['animals','business','celebreties','culture','education', 'espionage', 'family', 'fashion', 'health'];
-
-  	$scope.categories.forEach(function (k){
-  		$scope[k];
-  	});
-  	$scope.title = "Animals";
-
-  	$scope.loadBooks = function(category){
+    $scope.loadBooks = function(category){
   		$scope.title = category;
   		console.log(category);
   		$http({
@@ -58,5 +93,6 @@ angular.module('yomanApp')
 		  });
 
   	};
+
 
   }]);

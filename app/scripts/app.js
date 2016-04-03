@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'credit-cards'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,8 +40,25 @@ angular
         controller: 'CategoryController',
         controllerAs: 'categories'
       })
-
+      .when('/shopping', {
+        templateUrl: 'views/shopping.html',
+        controller: 'PaymentController',
+        controllerAs: 'categories'
+      })
+      .when('/book',{
+        templateUrl: 'views/book.html',
+        controller: 'BookController',
+        controllerAs: 'bookcontroller'
+      })
+      .when('/payment',{
+        templateUrl: 'views/payment.html',
+        controller: 'PaymentController',
+        controllerAs: 'paymentcontroller'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+  var globalCart=[];
+  var sizeOfCart = 0;
