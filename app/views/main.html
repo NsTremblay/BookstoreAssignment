@@ -79,10 +79,12 @@
                         <div class="col-md-3" style="height:100%" ng-if="book"> <h4>{{book.title}}</h4>
                           <img src="{{book.book_image}}" height="250" ></img>
                           <br>
-                          <strong ng-init="count()">${{book.price}}</strong><br>
-
+                          <strong ng-init="count()">Price :  ${{book.price}}</strong><br>
+                          
+                          <a ng-href="#/book/{{book.isbn}}">More information</a><br>
                           <span ng-if="$index==2" style="color:gold">SALE!!!</strong></span>
                           <button ng-Click="addBook()" class="btn btn-default" >Add to Cart</button>
+
                         </div>
                       </div>
                       </div>
@@ -100,7 +102,9 @@
                         <div class="col-md-3" style="padding-bottom: 50px;"> <h4>{{newbook.title}}</h4>
                           <img src="{{newbook.book_image}}" style="width:80%"></img>
                           <br>
-                          {{newbook.price}}
+                          Price : ${{newbook.price}}
+                                                    <a ng-href="#/book/{{book.isbn}}">More information</a><br>
+
                         </div>
                       </div>
                       </div>

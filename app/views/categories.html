@@ -33,7 +33,7 @@
 
     </script>
 
-<div id="wrapper" style="padding-top: 60px;width:100%;" onLoad="loadBooks('animals')">
+<div id="wrapper" style="width:100%;" onLoad="loadBooks('animals')">
 
             <!-- Sidebar -->
             <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
@@ -76,15 +76,15 @@
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
-              <div id="page-content-wrapper">
+              <div id="page-content-wrapper" ng-init="loadBooks('animals')">
             <div class="container" >
                     <button type="button" class="hamburger is-closed" data-toggle="offcanvas" style="margin-top:60px">
                     <span class="hamb-top"></span>
               <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
                 </button>
-                <div ng-controller="CategoryController" ng-init="loadBooks('animals')" style="width:90%; float:right;">
-                	<h2>{{title}}</h2>
+                <div ng-controller="CategoryController" style="width:90%; float:right;">
+                	<h2>{{titleCat}}</h2>
 	                <!-- Tab panes -->
 	                <!-- <div class="tab-content"> -->
 		                <!-- <div ng-repeat="category in categories"> -->
@@ -93,10 +93,10 @@
 			                      <div class="row">
 			                      <div ng-repeat="book in books">
 			                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
-			                          <img src="{{book.book_image}}" style="width:80%"></img>
-                                <a ng-href="#/book/{{book.isbn}}">More information</a>
+			                          <img src="{{book.book_image}}" style="width:80%"></img><br>
+                                    <a ng-href="#/book/{{book.isbn}}">More information</a>
 			                          <br>
-			                          {{book.price}}
+			                          Price : ${{book.price}}
 			                        </div>
 			                      </div>
 			                      </div>

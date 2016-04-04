@@ -32,7 +32,7 @@
 
     </script>
 
-<div id="wrapper" style="padding-top: 60px;width:100%;" onLoad="loadBooks('animals')">
+<div id="wrapper" style="width:100%;">
 
 
             <!-- /#sidebar-wrapper -->
@@ -40,14 +40,22 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
             <div class="container" >
-                <div ng-controller="BookController">
+                <div ng-controller="CategoryController">
 
                   <h3>{{book.title}}</h3>
                   <div style="float:left;position:relative;"><img src="{{book.book_image}}" height="250"></img><br></div>
                   <div style="float:right;position:relative;"><p>{{book.description}}</p></div>
-                  <br><br><br><br><br><br><br><br><br><br><br>
-                  <h3>Related books</h3>
-                  <div ng-repeat="books in category" ng-init="loadBooks('animals')" >
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  Price : ${{book.price}}<br><button ng-Click="addBook()" class="btn btn-default" >Add to Cart</button>
+
+
+
+
+
+                  <br><br><br><br><br><br><br><br><br>
+                  <h3 ng-init="loadBooks('animals')">Related books</h3>
+                  <div ng-repeat="books in category"  >
                       <div class="row">
                       <div ng-repeat="book in books">
                         <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>

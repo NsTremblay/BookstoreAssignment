@@ -40,43 +40,60 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
             <div class="container" >
-                <div ng-controller="PaymentController">
-                	<form name="paymentForm">
-                    <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-eager-type />
-                  </form>
-                  <p ng-show="paymentForm.cardNumber.$invalid && paymentForm.cardNumber.$ccEagerType">
-                    Looks like you're typing a {{paymentForm.cardNumber.$ccEagerType}} number!
-                  </p>
-                  <p ng-show="paymentForm.cardNumber.$valid">
-                    Yes, that looks like a valid {{paymentForm.cardNumber.$ccType}} number!
-                  </p>
-
-                </div>
-
-                <div ng-controller="CategoryController">
-                	<h2>{{title}}</h2>
-	                <!-- Tab panes -->
-	                <!-- <div class="tab-content"> -->
-		                <!-- <div ng-repeat="category in categories"> -->
-		                	<!-- <div role="presentation" class="tab-pane" style="width:90%; float:right;"> -->
-			                	<div ng-repeat="books in category">
-			                      <div class="row">
-			                      <div ng-repeat="book in books">
-			                        <div class="col-md-3" style="height:100%"> <h4>{{book.title}}</h4>
-			                          <img src="{{book.book_image}}" style="width:80%"></img>
-                                <a ng-href="#/book/{{book.isbn}}">More information</a>
-			                          <br>
-			                          {{book.price}}
-			                        </div>
-			                      </div>
-			                      </div>
-			                    </div>
-		                    <!-- </div> -->
-		                <!-- </div> -->
-		            <!-- </div> -->
-                </div>
-
+            <h3>Total $150</h3>
+        <form name="ccForm">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber" cc-number name="ccNumber" ng-model="card.number">
+            <span ng-show="ccForm.ccNumber.$valid" class="glyphicon glyphicon-ok"></span>
             </div>
+          
+          <div class="form-group">
+            <label for="cvc">CVC</label>
+            <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc">
+              <span ng-show="ccForm.ccCvc.$valid" class="glyphicon glyphicon-ok"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="card-number">Expiration</label>
+            <div class="row" cc-exp>
+              <div class="col-xs-3">
+                <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">
+
+                <span ng-show="ccForm.ccExpMonth.$valid" class="glyphicon glyphicon-ok"></span>
+              </div>
+              <div class="col-xs-3">
+                <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year">
+
+                <span ng-show="ccForm.ccExpYear.$valid" class="glyphicon glyphicon-ok"></span>
+              </div>
+            </div>
+          </div>
+          <label >E-mail</label>
+          <div class="row" cc-exp>
+          <div class="col-xs-3">
+          <input class="form-control"placeholder="E-mail" type="email" name="email" ng-model="myInput"><span ng-show="ccForm.email.$valid" class="glyphicon glyphicon-ok"></span>
+          </div>
+          </div>
+
+          <label >Address</label>
+          <div class="row" cc-exp>
+          <div class="col-xs-3">
+          <input class="form-control"placeholder="No. street" type="text" name="street">
+          <input class="form-control"placeholder="Postal Code" type="text" name="code">
+          <input class="form-control"placeholder="Country city" type="text" name="city">
+          </div>
+          </div>
+
+          <br><br>
+
+          <a ng-href="#/thank/" type="button" class="btn btn-default "
+            ng-show="ccForm.ccExpYear.$valid&&ccForm.ccExpMonth.$valid&&ccForm.ccNumber.$valid&&ccForm.ccCvc.$valid"
+          >Checkout</a>
+      </form>
+
+                	
+
             </div>
             </div>
             <!-- /#page-content-wrapper -->

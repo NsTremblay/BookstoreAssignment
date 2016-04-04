@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'credit-cards'
+    'credit-cards'  
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -55,10 +55,19 @@ angular
         controller: 'PaymentController',
         controllerAs: 'paymentcontroller'
       })
+      .when('/thank',{
+        templateUrl: 'views/thank.html',
+        controller: 'PaymentController',
+        controllerAs: 'paymentcontroller'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).filter('yesNo', function () {
+  return function (boolean) {
+    return boolean ? 'Yes' : 'No';
+  }
+});
 
   var globalCart=[];
   var sizeOfCart = 0;

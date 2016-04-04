@@ -9,17 +9,17 @@
  */
 angular.module('yomanApp')
   .controller('CategoryController', [ '$scope', '$http', function ($scope, $http) {
+  	  	$scope.titleCat = "Animals";
 
   	$scope.categories = ['animals','business','celebreties','culture','education', 'espionage', 'family', 'fashion', 'health'];
 
   	$scope.categories.forEach(function (k){
   		$scope[k];
   	});
-  	$scope.title = "Animals";
 
   	$scope.loadBooks = function(category){
-  		$scope.title = category;
-  		console.log(category);
+  		$scope.titleCat = category.toString();
+  		console.log(category, $scope.title );
   		$http({
 		  method: 'GET',
 		  url: 'http://api.nytimes.com/svc/books/v3/lists/'+category+'.json?&api-key='+key
