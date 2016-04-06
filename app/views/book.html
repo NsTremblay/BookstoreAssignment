@@ -41,14 +41,17 @@
             <div id="page-content-wrapper">
             <div class="container" >
                 <div ng-controller="CategoryController">
-
+                  <div style="width:70%; margin-left:auto; margin-right:auto;">
                   <h3>{{book.title}}</h3>
                   <div style="float:left;position:relative;"><img src="{{book.book_image}}" height="250"></img><br></div>
-                  <div style="float:right;position:relative;"><p>{{book.description}}</p></div>
+                  
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  <h3>Description</h3>
+                  <div style="float:right;position:relative;"><p>{{book.description}}</p></div>
+                  <br><br><br>
                   Price : ${{book.price}}<br><button ng-Click="addBook()" class="btn btn-default" >Add to Cart</button>
-
+                  </div>
 
 
 
